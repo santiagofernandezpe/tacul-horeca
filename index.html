@@ -333,7 +333,7 @@ footer{background:var(--azul-osc);padding:32px 48px;display:flex;align-items:cen
         </div>
         <div class="form-group"><label class="form-label">Mensaje / Detalle del pedido</label><textarea class="form-textarea" id="f-mensaje" placeholder="Cantidades aproximadas, talles, colores, fecha de necesidad, personalizaciones..."></textarea></div>
         <button class="form-submit" onclick="enviarFormulario()">Enviar consulta →</button>
-        <p class="form-note">También podés escribirnos a <strong>tacul@indumentaria.com</strong></p>
+        <p class="form-note">También podés escribirnos a <strong>info@tacul.com.ar</strong></p>
       </div>
       <div class="contacto-info">
         <h3>¿Cómo es el proceso?</h3>
@@ -522,7 +522,7 @@ async function enviarFormulario(){
   btn.disabled=true;
 
   try {
-    const res = await fetch('https://formspree.io/f/REEMPLAZAR_CON_TU_ID', {
+    const res = await fetch('https://formsubmit.co/ajax/info@tacul.com.ar', {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
       body: JSON.stringify({
@@ -536,10 +536,10 @@ async function enviarFormulario(){
     if(res.ok){
       document.getElementById('modal-ok').classList.add('visible');
     } else {
-      alert('Hubo un error al enviar. Por favor escribinos directamente a tacul@indumentaria.com');
+      alert('Hubo un error al enviar. Por favor escribinos directamente a info@tacul.com.ar');
     }
   } catch(e) {
-    alert('Error de conexión. Por favor escribinos a tacul@indumentaria.com');
+    alert('Error de conexión. Por favor escribinos a info@tacul.com.ar');
   }
   
   btn.textContent='Enviar consulta →';
