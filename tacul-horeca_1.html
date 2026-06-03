@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tacul Indumentaria — Soluciones para HORECA y Sanidad · Patagonia</title>
+<meta name="description" content="Más de 30 años vistiendo a los mejores equipos de hotelería, gastronomía y sanidad en Patagonia Norte.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul:#1C00FF; --azul-osc:#0a0a2e; --azul-med:#1a1a6e;
+  --azul-clar:#e8e8ff; --azul-hover:#f0f0ff;
+  --gris-osc:#4a4a4a; --gris-med:#7a7a7a; --gris-clar:#f4f4f6;
+  --borde:#d8d8e8; --bg:#f8f8fc; --blanco:#ffffff;
+  --sombra:0 4px 24px rgba(28,0,255,.08);
+  --ff-display:'Playfair Display',Georgia,serif;
+  --ff-body:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-body);background:var(--bg);color:var(--gris-osc);overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--azul-osc);box-shadow:0 2px 20px rgba(0,0,255,.2);padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.nav-logo svg{height:36px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:white}
+.nav-cta{background:var(--azul)!important;color:white!important;padding:7px 18px;border-radius:4px;opacity:1!important;white-space:nowrap}
+
+/* HERO */
+.hero{background:var(--azul-osc);padding:80px 48px 72px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:20px}
+.hero-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,.3)}
+.hero h1{font-family:var(--ff-display);font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.1;font-weight:900;color:white;margin-bottom:20px;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:#a0a0ff}
+.hero-sub{font-size:.98rem;font-weight:300;line-height:1.75;color:rgba(255,255,255,.62);max-width:440px;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--azul);color:white;border:none;border-radius:4px;padding:13px 26px;font-family:var(--ff-body);font-size:.85rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-primary:hover{background:#1400cc;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:white;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:13px 26px;font-family:var(--ff-body);font-size:.85rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-ghost:hover{border-color:white;background:rgba(255,255,255,.06)}
+.hero-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hero-stat-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:22px 20px;text-align:center}
+.hero-stat-card.accent{background:var(--azul);border-color:var(--azul)}
+.hero-stat-card .num{font-family:var(--ff-display);font-size:2.2rem;font-weight:900;color:white;line-height:1;display:block}
+.hero-stat-card .label{font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:5px;display:block}
+
+/* STATS STRIP */
+.stats-strip{background:var(--blanco);border-bottom:1px solid var(--borde);display:grid;grid-template-columns:repeat(4,1fr);box-shadow:var(--sombra)}
+.stat-item{padding:28px 24px;text-align:center;border-right:1px solid var(--borde)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:var(--ff-display);font-size:2rem;font-weight:900;color:var(--azul);display:block;line-height:1}
+.stat-label{font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gris-med);margin-top:5px;display:block}
+
+/* SECCIONES */
+.section{padding:80px 48px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--azul);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.section-tag::after{content:'';width:32px;height:2px;background:var(--azul)}
+.section-title{font-family:var(--ff-display);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;line-height:1.15;letter-spacing:-.02em;color:var(--azul-osc);margin-bottom:12px}
+.section-title em{font-style:italic;color:var(--azul)}
+
+/* NOSOTROS */
+.nosotros{background:var(--blanco);border-bottom:1px solid var(--borde)}
+.nosotros-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:48px}
+.nosotros-text p{font-size:.95rem;line-height:1.8;color:var(--gris-osc);margin-bottom:18px}
+.nosotros-text p strong{color:var(--azul-osc);font-weight:600}
+.features-list{display:flex;flex-direction:column;gap:14px}
+.feature-item{display:flex;gap:14px;align-items:flex-start;background:var(--bg);border:1px solid var(--borde);border-radius:4px;padding:18px 20px;transition:all .2s}
+.feature-item:hover{border-color:var(--azul);background:var(--azul-hover)}
+.feature-icon{width:38px;height:38px;flex-shrink:0;background:var(--azul-clar);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.feature-title{font-size:.88rem;font-weight:600;color:var(--azul-osc);margin-bottom:3px}
+.feature-desc{font-size:.8rem;color:var(--gris-med);line-height:1.55}
+
+/* PROVINCIAS */
+.provincias{background:var(--azul-osc);padding:60px 48px}
+.provincias .section-tag{color:rgba(255,255,255,.5)}
+.provincias .section-tag::after{background:rgba(255,255,255,.25)}
+.provincias .section-title{color:white}
+.provincias .section-title em{color:#a0a0ff}
+.provincias-inner{display:flex;align-items:center;gap:16px;margin-top:36px;flex-wrap:wrap}
+.prov-pill{border:1px solid rgba(255,255,255,.2);border-radius:4px;padding:12px 22px;display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;color:rgba(255,255,255,.8);transition:all .2s}
+.prov-pill:hover{border-color:rgba(255,255,255,.6);color:white}
+.prov-dot{width:6px;height:6px;background:var(--azul);border-radius:50%}
+.prov-quote{max-width:480px;margin-left:auto;font-size:.9rem;line-height:1.75;font-style:italic;color:rgba(255,255,255,.5);border-left:2px solid rgba(255,255,255,.15);padding-left:20px}
+
+/* CATÁLOGO */
+.catalogo{background:var(--bg);border-top:1px solid var(--borde)}
+.catalogo-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:40px}
+.catalogo-desc{font-size:.92rem;line-height:1.75;color:var(--gris-med);margin-top:12px}
+.catalogo-note{background:var(--azul-clar);border:1px solid rgba(28,0,255,.15);border-radius:4px;padding:20px 22px;font-size:.82rem;line-height:1.7;color:var(--gris-osc)}
+.catalogo-note strong{color:var(--azul-osc);display:block;margin-bottom:4px;font-size:.85rem}
+.cat-tabs{display:flex;border-bottom:2px solid var(--borde);margin-bottom:32px;overflow-x:auto}
+.cat-tab{background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;color:var(--gris-med);font-family:var(--ff-body);font-size:.76rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:11px 20px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.cat-tab:hover{color:var(--azul-osc)}
+.cat-tab.active{color:var(--azul);border-bottom-color:var(--azul)}
+.productos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.prod-card{background:var(--blanco);border:1px solid var(--borde);border-radius:4px;padding:20px;transition:all .2s;cursor:pointer;position:relative}
+.prod-card:hover{border-color:var(--azul);box-shadow:var(--sombra)}
+.prod-card.selected{border-color:var(--azul);background:var(--azul-clar)}
+.prod-card.selected::after{content:'✓';position:absolute;top:12px;right:14px;color:var(--azul);font-weight:700;font-size:.9rem}
+.prod-cat-label{font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--azul);margin-bottom:6px}
+.prod-name{font-size:.88rem;font-weight:600;color:var(--azul-osc);line-height:1.4;margin-bottom:6px}
+.prod-desc{font-size:.78rem;color:var(--gris-med);line-height:1.5}
+.prod-add{display:inline-flex;align-items:center;gap:4px;margin-top:12px;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-med);transition:color .2s}
+.prod-card:hover .prod-add,.prod-card.selected .prod-add{color:var(--azul)}
+
+
+/* STEPPER */
+.prod-footer{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:8px}
+.prod-stepper{display:flex;align-items:center;gap:6px}
+.stepper-btn{background:var(--azul-clar);border:none;border-radius:3px;width:24px;height:24px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--azul-med);font-weight:700;transition:background .12s;line-height:1}
+.stepper-btn:hover{background:var(--azul);color:white}
+.prod-card.selected .stepper-btn{background:rgba(28,0,255,.15)}
+.prod-card.selected .stepper-btn:hover{background:var(--azul);color:white}
+.stepper-num{font-size:.9rem;font-weight:700;color:var(--azul-osc);min-width:20px;text-align:center}
+.stepper-label{font-size:.68rem;color:var(--gris-med)}
+
+/* PEDIDO BAR */
+.pedido-bar{position:fixed;bottom:0;left:0;right:0;background:var(--azul-osc);border-top:1px solid rgba(255,255,255,.1);padding:14px 48px;display:flex;align-items:center;justify-content:space-between;z-index:200;transform:translateY(100%);transition:transform .3s;box-shadow:0 -4px 24px rgba(10,10,46,.25)}
+.pedido-bar.visible{transform:translateY(0)}
+.pedido-info{font-size:.88rem;color:rgba(255,255,255,.7)}
+.pedido-info strong{color:white}
+.pedido-actions{display:flex;gap:10px}
+.btn-limpiar-bar{background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.2);border-radius:4px;padding:9px 16px;font-family:var(--ff-body);font-size:.78rem;font-weight:500;cursor:pointer;transition:all .2s}
+.btn-limpiar-bar:hover{background:rgba(255,255,255,.18)}
+
+/* CONTACTO */
+.contacto{background:var(--blanco);border-top:1px solid var(--borde)}
+.contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:48px}
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gris-med);margin-bottom:7px}
+.form-input,.form-textarea,.form-select{width:100%;background:var(--bg);border:1.5px solid var(--borde);border-radius:4px;padding:10px 14px;color:var(--gris-osc);font-family:var(--ff-body);font-size:.9rem;outline:none;transition:border-color .2s}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--azul);background:var(--azul-hover)}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(74,74,74,.3)}
+.form-textarea{height:110px;resize:vertical}
+.form-pedido-preview{background:var(--azul-clar);border:1px solid rgba(28,0,255,.2);border-radius:4px;padding:14px 16px;margin-bottom:16px;font-size:.82rem;color:var(--gris-osc);display:none}
+.form-pedido-preview.visible{display:block}
+.form-pedido-preview strong{color:var(--azul-osc);display:block;margin-bottom:5px;font-size:.8rem}
+.form-submit{width:100%;background:var(--azul);color:white;border:none;border-radius:4px;padding:14px;font-family:var(--ff-body);font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:4px}
+.form-submit:hover{background:var(--azul-med)}
+.form-note{font-size:.72rem;color:var(--gris-med);margin-top:10px;text-align:center}
+.contacto-info h3{font-family:var(--ff-display);font-size:1.4rem;font-weight:700;color:var(--azul-osc);margin-bottom:14px;line-height:1.2}
+.contacto-info>p{font-size:.92rem;line-height:1.75;color:var(--gris-med);margin-bottom:28px}
+.proceso-steps{display:flex;flex-direction:column;gap:18px}
+.step{display:flex;gap:14px;align-items:flex-start}
+.step-num{width:30px;height:30px;flex-shrink:0;border:1.5px solid var(--borde);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:.82rem;font-weight:700;color:var(--azul)}
+.step-title{font-size:.87rem;font-weight:600;color:var(--azul-osc);margin-bottom:3px}
+.step-desc{font-size:.78rem;color:var(--gris-med);line-height:1.55}
+
+/* FOOTER */
+footer{background:var(--azul-osc);padding:32px 48px;display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:.76rem;color:rgba(255,255,255,.35)}
+.footer-tagline{font-family:var(--ff-display);font-style:italic;font-size:.88rem;color:rgba(255,255,255,.45)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,10,46,.6);z-index:500;display:none;align-items:center;justify-content:center}
+.modal-overlay.visible{display:flex}
+.modal-box{background:var(--blanco);border-radius:8px;padding:44px;max-width:440px;width:90%;text-align:center;box-shadow:0 24px 60px rgba(10,10,46,.2)}
+.modal-icon{font-size:2.4rem;margin-bottom:16px}
+.modal-box h3{font-family:var(--ff-display);font-size:1.4rem;color:var(--azul-osc);margin-bottom:10px}
+.modal-box p{font-size:.88rem;line-height:1.7;color:var(--gris-med);margin-bottom:22px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:60px 20px 48px;gap:36px}
+  .stats-strip{grid-template-columns:repeat(2,1fr)}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(3),.stat-item:nth-child(4){border-top:1px solid var(--borde)}
+  .section{padding:60px 20px}
+  .nosotros-grid,.catalogo-intro,.contacto-grid{grid-template-columns:1fr;gap:36px}
+  .productos-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .provincias{padding:50px 20px}
+  .provincias-inner{flex-direction:column;align-items:flex-start}
+  .prov-quote{margin-left:0;max-width:100%}
+  .pedido-bar{padding:14px 20px;flex-direction:column;gap:10px;align-items:stretch}
+  footer{flex-direction:column;gap:10px;text-align:center;padding:28px 20px}
+}
+@media(max-width:560px){
+  .productos-grid{grid-template-columns:1fr}
+  .hero-stats-grid{grid-template-columns:1fr 1fr}
+  .hero-actions{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex;flex-direction:column;line-height:1">
+    <span style="font-family:Arial Black,Arial,sans-serif;font-weight:900;font-size:1.5rem;color:#1C00FF;letter-spacing:-.03em">TACUL</span>
+    <span style="font-family:Arial,sans-serif;font-size:.62rem;color:#aaa;letter-spacing:.15em;text-transform:uppercase;margin-top:1px">Indumentaria</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#contacto" class="nav-cta">Solicitar presupuesto</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="hero-tag">Patagonia Norte · Desde 1995</div>
+    <h1>Vestimos a los <em>mejores equipos</em> de la Patagonia</h1>
+    <p class="hero-sub">Especialistas en indumentaria de trabajo para HORECA y sanidad en Patagonia Norte. Neuquén, Río Negro, Chubut y Santa Cruz.</p>
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn-primary">Ver catálogo</a>
+      <a href="#contacto" class="btn-ghost">Solicitar presupuesto</a>
+    </div>
+  </div>
+  <div class="hero-stats-grid">
+    <div class="hero-stat-card accent">
+      <span class="num">+30</span>
+      <span class="label">Años de experiencia</span>
+    </div>
+    <div class="hero-stat-card">
+      <span class="num">4</span>
+      <span class="label">Provincias patagónicas</span>
+    </div>
+    <div class="hero-stat-card">
+      <span class="num">HORECA</span>
+      <span class="label">Especialización</span>
+    </div>
+    <div class="hero-stat-card">
+      <span class="num">100%</span>
+      <span class="label">Atención personalizada</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item"><span class="stat-num">+30</span><span class="stat-label">Años de trayectoria</span></div>
+  <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Provincias</span></div>
+  <div class="stat-item"><span class="stat-num">HORECA</span><span class="stat-label">Especialización exclusiva</span></div>
+  <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Atención personalizada</span></div>
+</div>
+
+<section class="nosotros section" id="nosotros">
+  <div class="section-inner">
+    <span class="section-tag">Nuestra historia</span>
+    <h2 class="section-title">Líderes en Bariloche y <em>Patagonia Norte</em> hace más de tres décadas</h2>
+    <div class="nosotros-grid">
+      <div class="nosotros-text">
+        <p>Trabajamos con la mayoría de los prestadores de servicios HORECA en Bariloche y la región patagónica. No somos un proveedor más: somos el proveedor que conoce las necesidades reales de cada establecimiento.</p>
+        <p>En un contexto de alta rotación y exigencia estética, <strong>la indumentaria de trabajo es parte de la identidad de tu negocio</strong>. Por eso ofrecemos soluciones a medida, con la experiencia de quien vistió a los mejores equipos de la región durante más de 30 años.</p>
+        <p>Hoteles, restaurantes, clínicas y empresas de servicios en todo el Sur argentino confían en Tacul para vestir a sus equipos.</p>
+      </div>
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div><div class="feature-title">Atención personalizada</div><div class="feature-desc">Escuchamos, asesoramos y presentamos propuestas adaptadas a cada proyecto y establecimiento.</div></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📦</div>
+          <div><div class="feature-title">Entregas en toda la región</div><div class="feature-desc">Llegamos a Neuquén, Río Negro, Chubut y Santa Cruz coordinando la logística para cada cliente.</div></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🏆</div>
+          <div><div class="feature-title">Referentes del sector</div><div class="feature-desc">Más de 30 años de presencia en el mercado HORECA patagónico nos dan el conocimiento que otros no tienen.</div></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✂️</div>
+          <div><div class="feature-title">Calidad constante</div><div class="feature-desc">Materiales y proveedores seleccionados. La calidad que elegiste la primera vez es la que recibís siempre.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="provincias">
+  <div class="section-inner">
+    <span class="section-tag">Cobertura regional</span>
+    <h2 class="section-title">Cuatro provincias, <em>un solo proveedor</em></h2>
+    <div class="provincias-inner">
+      <div class="prov-pill"><span class="prov-dot"></span> Neuquén</div>
+      <div class="prov-pill"><span class="prov-dot"></span> Río Negro</div>
+      <div class="prov-pill"><span class="prov-dot"></span> Chubut</div>
+      <div class="prov-pill"><span class="prov-dot"></span> Santa Cruz</div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="catalogo section" id="catalogo">
+  <div class="section-inner">
+    <div class="catalogo-intro">
+      <div>
+        <span class="section-tag">Catálogo B2B</span>
+        <h2 class="section-title">Indumentaria para <em>equipos profesionales</em></h2>
+        <p class="catalogo-desc">Seleccioná los productos que te interesan y envianos tu consulta. Te preparamos una propuesta formal con precios, talles disponibles y tiempos de entrega para tu región.</p>
+      </div>
+      <div class="catalogo-note">
+        <strong>¿Cómo funciona?</strong>
+        Marcá los productos que necesitás, completá el formulario con los datos de tu establecimiento y te enviamos una cotización personalizada en menos de 48 horas hábiles. Sin compromisos.
+      </div>
+    </div>
+    <div class="cat-tabs" id="cat-tabs"></div>
+    <div class="productos-grid" id="productos-grid"></div>
+  </div>
+</section>
+
+<section class="contacto section" id="contacto">
+  <div class="section-inner">
+    <span class="section-tag">Contacto</span>
+    <h2 class="section-title">Solicitá tu <em>presupuesto</em></h2>
+    <div class="contacto-grid">
+      <div>
+        <div class="form-pedido-preview" id="form-pedido-preview">
+          <strong>Productos seleccionados del catálogo:</strong>
+          <span id="form-pedido-list"></span>
+        </div>
+        <div class="form-group"><label class="form-label">Nombre completo *</label><input type="text" class="form-input" id="f-nombre" placeholder="Tu nombre"></div>
+        <div class="form-group"><label class="form-label">Establecimiento / Empresa *</label><input type="text" class="form-input" id="f-empresa" placeholder="Hotel, restaurante, clínica..."></div>
+        <div class="form-group">
+          <label class="form-label">Rubro</label>
+          <select class="form-select" id="f-rubro">
+            <option value="">Seleccioná tu rubro</option>
+            <option>Hotelería</option><option>Gastronomía / Restaurante</option>
+            <option>Salud / Sanidad</option><option>Catering / Eventos</option>
+            <option>Servicios / Mantenimiento</option><option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" id="f-email" placeholder="tu@email.com"></div>
+        <div class="form-group">
+          <label class="form-label">Provincia</label>
+          <select class="form-select" id="f-provincia">
+            <option value="">Seleccioná la provincia</option>
+            <option>Neuquén</option><option>Río Negro</option>
+            <option>Chubut</option><option>Santa Cruz</option><option>Otra</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Mensaje / Detalle del pedido</label><textarea class="form-textarea" id="f-mensaje" placeholder="Cantidades aproximadas, talles, colores, fecha de necesidad, personalizaciones..."></textarea></div>
+        <button class="form-submit" onclick="enviarFormulario()">Enviar consulta →</button>
+        <p class="form-note">También podés escribirnos a <strong>tacul@indumentaria.com</strong></p>
+      </div>
+      <div class="contacto-info">
+        <h3>¿Cómo es el proceso?</h3>
+        <p>Trabajamos de manera directa y sin intermediarios. Cuando recibimos tu consulta, un asesor te contacta para entender exactamente qué necesita tu equipo.</p>
+        <div class="proceso-steps">
+          <div class="step"><div class="step-num">1</div><div><div class="step-title">Recibimos tu consulta</div><div class="step-desc">Analizamos tu pedido con los productos seleccionados y los detalles que nos dejaste.</div></div></div>
+          <div class="step"><div class="step-num">2</div><div><div class="step-title">Te contactamos en 48 hs</div><div class="step-desc">Un asesor de Tacul afina cantidades, talles, colores y opciones de personalización.</div></div></div>
+          <div class="step"><div class="step-num">3</div><div><div class="step-title">Recibís la propuesta formal</div><div class="step-desc">Presupuesto detallado con precios, disponibilidad y condiciones de entrega para tu región.</div></div></div>
+          <div class="step"><div class="step-num">4</div><div><div class="step-title">Coordinamos la entrega</div><div class="step-desc">Gestionamos la producción y la logística hasta tu establecimiento en Patagonia.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2025 Tacul Indumentaria · Moreno 546 L.2, Bariloche</div>
+  <div class="footer-tagline">Vistiendo al Sur desde 1995</div>
+</footer>
+
+<div class="pedido-bar" id="pedido-bar">
+  <div class="pedido-info"><strong id="pedido-count">0 productos seleccionados</strong></div>
+  <div class="pedido-actions">
+    <button class="btn-limpiar-bar" onclick="limpiarSeleccion()">Limpiar</button>
+    <a href="#contacto" class="btn-primary" style="padding:9px 18px;font-size:.78rem" onclick="scrollToForm()">Solicitar presupuesto →</a>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-ok">
+  <div class="modal-box">
+    <div class="modal-icon">✉️</div>
+    <h3>¡Consulta enviada!</h3>
+    <p>Recibimos tu solicitud. Un asesor de Tacul Indumentaria se va a comunicar con vos en menos de 48 horas hábiles con la propuesta personalizada.</p>
+    <button class="btn-primary" onclick="cerrarModal()" style="width:100%">Entendido</button>
+  </div>
+</div>
+
+<script>
+const CATALOGO={
+  "Chaquetas de Cocina":[
+    {name:"Chaqueta de cocinero blanca manga larga",desc:"Gabardina, cierre con broches o botones"},
+    {name:"Chaqueta de cocinero cruzada blanca",desc:"Corte clásico, cuello de solapa"},
+    {name:"Chaqueta de cocinero cruzada negra",desc:"Ideal para brigadas de cocina moderna"},
+    {name:"Chaqueta de cocina manga corta",desc:"Para temporadas de calor"},
+    {name:"Chaqueta de cocinero gabardina color",desc:"Varios colores disponibles"},
+  ],
+  "Ambos y Casacas":[
+    {name:"Ambo casaca y pantalón Soft Flex",desc:"Tejido elástico, máxima comodidad"},
+    {name:"Ambo casaca cuello V Arciel color",desc:"Ideal para salud y hotelería"},
+    {name:"Ambo casaca cuello V Arciel blanco",desc:"Clásico para sanidad"},
+    {name:"Casaca manga corta blanca Arciel",desc:"Liviana y de fácil mantenimiento"},
+    {name:"Casaca manga corta color Arciel",desc:"Variedad de colores disponibles"},
+  ],
+  "Hotelería y Salón":[
+    {name:"Camisa de mozo blanca manga larga",desc:"Corte entallado, varios cuellos"},
+    {name:"Camisa de mozo blanca manga corta",desc:"Para temporada cálida"},
+    {name:"Camisa de dama alforzada manga larga",desc:"Elegante para recepción y salón"},
+    {name:"Chaleco de mozo Bengalina",desc:"Clásico para servicio de salón"},
+    {name:"Chaleco de mozo Alpaca",desc:"Acabado premium, alta durabilidad"},
+    {name:"Chaleco de mozo tela mecánica",desc:"Varios colores disponibles"},
+  ],
+  "Accesorios HORECA":[
+    {name:"Moño de raso negro / color",desc:"Varios colores disponibles"},
+    {name:"Moño de terciopelo",desc:"Para eventos y alta gastronomía"},
+    {name:"Corbatín de mozo",desc:"Elástico, varios colores"},
+    {name:"Delantal de mozo largo",desc:"Gabardina, varios colores"},
+    {name:"Delantal de cocina con peto",desc:"Resistente y lavable"},
+    {name:"Guantes de algodón blanco",desc:"Para servicio de salón y eventos"},
+  ],
+  "Guardapolvos":[
+    {name:"Guardapolvo dama/hombre color con broches",desc:"Varios colores disponibles"},
+    {name:"Guardapolvo dama/hombre blanco",desc:"Telas premium, corte profesional"},
+    {name:"Guardapolvo dama/hombre con botón",desc:"Corte clásico profesional"},
+  ],
+  "Mantenimiento":[
+    {name:"Mameluco de grafa azul marino",desc:"Resistente, para trabajo pesado"},
+    {name:"Pantalón de trabajo gabardina",desc:"Hombre y dama, varios colores"},
+    {name:"Campera de abrigo trabajo",desc:"Para el frío patagónico"},
+  ],
+};
+
+let seleccionados=new Set();
+const cats=Object.keys(CATALOGO);
+let catActiva=cats[0];
+
+function renderTabs(){
+  const el=document.getElementById('cat-tabs');
+  el.innerHTML='';
+  cats.forEach(cat=>{
+    const btn=document.createElement('button');
+    btn.className='cat-tab'+(cat===catActiva?' active':'');
+    btn.textContent=cat;
+    btn.onclick=()=>{catActiva=cat;renderTabs();renderGrid();};
+    el.appendChild(btn);
+  });
+}
+
+// cantidades: key -> cantidad
+const cantidades = {};
+
+function renderGrid(){
+  const el=document.getElementById('productos-grid');
+  el.innerHTML='';
+  CATALOGO[catActiva].forEach((p,i)=>{
+    const key=catActiva+'|'+i;
+    const sel=seleccionados.has(key);
+    const cant=cantidades[key]||1;
+    const card=document.createElement('div');
+    card.className='prod-card'+(sel?' selected':'');
+    card.innerHTML=`
+      <div class="prod-cat-label">${catActiva}</div>
+      <div class="prod-name">${p.name}</div>
+      <div class="prod-desc">${p.desc}</div>
+      <div class="prod-footer">
+        <div class="prod-stepper" onclick="event.stopPropagation()">
+          <button class="stepper-btn" onclick="cambiarCant('${key}',-1)">−</button>
+          <span class="stepper-num" id="cant-${key.replace(/[|]/g,'-')}">${cant}</span>
+          <button class="stepper-btn" onclick="cambiarCant('${key}',1)">+</button>
+          <span class="stepper-label">unid.</span>
+        </div>
+        <div class="prod-add">${sel?'✓ En consulta':'+ Agregar'}</div>
+      </div>`;
+    card.onclick=()=>toggleProd(key,card,p.name);
+    el.appendChild(card);
+  });
+}
+
+function cambiarCant(key, delta){
+  cantidades[key] = Math.max(1, (cantidades[key]||1) + delta);
+  const el = document.getElementById('cant-'+key.replace(/[|]/g,'-'));
+  if(el) el.textContent = cantidades[key];
+}
+
+function toggleProd(key,card,name){
+  if(seleccionados.has(key)){
+    seleccionados.delete(key);
+    card.classList.remove('selected');
+    card.querySelector('.prod-add').textContent='+ Agregar';
+  } else {
+    seleccionados.add(key);
+    card.classList.add('selected');
+    card.querySelector('.prod-add').textContent='✓ En consulta';
+  }
+  actualizarBarra();
+}
+
+function actualizarBarra(){
+  const n=seleccionados.size;
+  const totalUnid=[...seleccionados].reduce((s,k)=>s+(cantidades[k]||1),0);
+  document.getElementById('pedido-count').textContent=`${n} producto${n!==1?'s':''} · ${totalUnid} unidad${totalUnid!==1?'es':''}`;
+  document.getElementById('pedido-bar').classList.toggle('visible',n>0);
+  const lineas=[...seleccionados].map(k=>{
+    const[cat,idx]=k.split('|');
+    const nombre=CATALOGO[cat]?.[parseInt(idx)]?.name||'';
+    const cant=cantidades[k]||1;
+    return `${nombre} (x${cant})`;
+  }).filter(Boolean);
+  document.getElementById('form-pedido-list').textContent=lineas.join(', ');
+  document.getElementById('form-pedido-preview').classList.toggle('visible',n>0);
+}
+
+function limpiarSeleccion(){seleccionados.clear();renderGrid();actualizarBarra();}
+function scrollToForm(){setTimeout(()=>document.getElementById('contacto').scrollIntoView({behavior:'smooth'}),100);}
+
+async function enviarFormulario(){
+  const nombre=document.getElementById('f-nombre').value.trim();
+  const empresa=document.getElementById('f-empresa').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  if(!nombre||!empresa||!email){alert('Por favor completá nombre, establecimiento y email.');return;}
+  
+  const rubro=document.getElementById('f-rubro').value;
+  const provincia=document.getElementById('f-provincia').value;
+  const localidad=document.getElementById('f-localidad').value.trim();
+  const mensaje=document.getElementById('f-mensaje').value;
+  
+  // Armar listado de productos con cantidades
+  const lineasProductos=[...seleccionados].map(k=>{
+    const[cat,idx]=k.split('|');
+    const nombre_prod=CATALOGO[cat]?.[parseInt(idx)]?.name||'';
+    const cant=cantidades[k]||1;
+    return`- ${nombre_prod} x${cant}`;
+  }).join('\n');
+
+  const btn=document.querySelector('.form-submit');
+  btn.textContent='Enviando...';
+  btn.disabled=true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/REEMPLAZAR_CON_TU_ID', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        nombre, empresa, rubro, email,
+        provincia, localidad, mensaje,
+        productos: lineasProductos || '(sin productos seleccionados)',
+        _subject: `Consulta de presupuesto - ${empresa}`,
+        _replyto: email
+      })
+    });
+    if(res.ok){
+      document.getElementById('modal-ok').classList.add('visible');
+    } else {
+      alert('Hubo un error al enviar. Por favor escribinos directamente a tacul@indumentaria.com');
+    }
+  } catch(e) {
+    alert('Error de conexión. Por favor escribinos a tacul@indumentaria.com');
+  }
+  
+  btn.textContent='Enviar consulta →';
+  btn.disabled=false;
+}
+
+function cerrarModal(){document.getElementById('modal-ok').classList.remove('visible');}
+
+renderTabs();
+renderGrid();
+</script>
+</body>
+</html>
